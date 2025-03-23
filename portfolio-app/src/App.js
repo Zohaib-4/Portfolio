@@ -4,21 +4,25 @@ import DataEntryPage from "./pages/DataEntryPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import "./styles/global.css"; // Import global styles
-import "./styles/custom.css"; // Import component-specific styles (if needed)
-import "./styles/tailwind.css"; // Import Tailwind (if using)
+import "./styles/global.css"; // Global styles
+import "./styles/custom.css"; // Component-specific styles
+import "./styles/tailwind.css"; // Tailwind CSS
 
 function App() {
   const [portfolioData, setPortfolioData] = useState(null);
 
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<DataEntryPage setPortfolioData={setPortfolioData} />} />
-        <Route path="/portfolio" element={<PortfolioPage data={portfolioData} />} />
-      </Routes>
-      <Footer />
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<DataEntryPage setPortfolioData={setPortfolioData} />} />
+            <Route path="/portfolio" element={<PortfolioPage data={portfolioData} />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </Router>
   );
 }
